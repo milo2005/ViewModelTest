@@ -4,7 +4,7 @@ import android.app.Application
 import okhttp3.HttpUrl
 import org.test.testutest.data.db.AppDataBase
 import org.test.testutest.data.net.AppApi
-import org.test.testutest.data.preferences.UserSesion
+import org.test.testutest.data.preferences.UserSession
 
 class App:Application(){
 
@@ -12,6 +12,6 @@ class App:Application(){
         super.onCreate()
         AppDataBase.init(this)
         AppApi.init(HttpUrl.parse(getString(R.string.url_base))!!)
-        UserSesion.init(this)
+        UserSession.init(this)
     }
 }

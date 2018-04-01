@@ -3,7 +3,7 @@ package org.test.testutest.data.preferences
 import android.content.Context
 import android.content.SharedPreferences
 
-object UserSesion{
+object UserSession{
 
     private lateinit var preferences:SharedPreferences
 

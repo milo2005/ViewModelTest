@@ -8,7 +8,7 @@ import org.test.testutest.data.models.Credentials
 import org.test.testutest.data.models.User
 import org.test.testutest.data.net.AppApi
 import org.test.testutest.data.net.api.UserApi
-import org.test.testutest.data.preferences.UserSesion
+import org.test.testutest.data.preferences.UserSession
 import org.test.testutest.util.applySchedulers
 import org.test.testutest.util.validateResponse
 
@@ -21,8 +21,8 @@ class MainViewModel : ViewModel() {
             api.login(Credentials(username, password))
                     .validateResponse()
                     .map {
-                        UserSesion.token = it.token
-                        UserSesion.id = it.id
+                        UserSession.token = it.token
+                        UserSession.id = it.id
                         it.token
                     }
                     .applySchedulers()
@@ -35,7 +35,7 @@ class MainViewModel : ViewModel() {
 
 
     private fun getAndSaveUser(): Single<User> =
-            api.getUser(UserSesion.token!!, UserSesion.id!!)
+            api.getUser(UserSession.token!!, UserSession.id!!)
                     .validateResponse()
                     .flatMap { user ->
                         Single.fromCallable { dao.insert(user) }

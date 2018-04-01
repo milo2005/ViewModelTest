@@ -17,4 +17,4 @@ interface UserApi {
 
 class RspLogin(val id:String, val token:String)
 
-class ResponseBody<out T>(val success: Boolean, val data: T, val error: String)
+class ResponseBody<out T>(val success: Boolean, val data: T? = null, val error: String? = null)
